@@ -58,16 +58,11 @@ namespace EF___miniproject
         private void UpdateCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             var cur = tabViewSource.View.CurrentItem as Table_1;
-            var cur1 = table_1DataGrid.SelectedItem as Table_1;
 
-            if (cur.id == cur1.id)
-            {
-                cur.city_name = city_nameTextBox.Text;
-                cur.city_id = city_idTextBox.Text;
-                cur.temperature = double.Parse(temperatureTextBox.Text);
-            }
+            cur.city_name = city_nameTextBox.Text;
+            cur.city_id = city_idTextBox.Text;
+            cur.temperature = double.Parse(temperatureTextBox.Text);
 
-            context.Entry(cur).CurrentValues.SetValues(cur);
             context.SaveChanges();
             tabViewSource.View.Refresh();
         }
@@ -133,6 +128,24 @@ namespace EF___miniproject
                     }
                 }
             });
+        }
+
+        private void city_idTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(city_idTextBox.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter digits only!");
+                city_idTextBox.Text = city_idTextBox.Text.Remove(city_idTextBox.Text.Length - 1);
+            }
+        }
+
+        private void temperatureTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(temperatureTextBox.Text, @"[^0-9]+[^.^[0-9]]?"))
+            {
+                MessageBox.Show("Please enter digits only!");
+                temperatureTextBox.Text = temperatureTextBox.Text.Remove(temperatureTextBox.Text.Length - 1);
+            }
         }
     }
 }

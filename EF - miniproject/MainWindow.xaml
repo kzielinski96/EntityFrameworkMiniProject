@@ -38,9 +38,9 @@
       <Label Content="city name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center"/>
       <TextBox x:Name="city_nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-51,5" Grid.Row="2"  VerticalAlignment="Center" Width="175"/>
       <Label Content="city id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Grid.RowSpan="2"/>
-      <TextBox x:Name="city_idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-50,5" Grid.Row="1" VerticalAlignment="Center" Width="175"/>
+      <TextBox x:Name="city_idTextBox" TextChanged="city_idTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,-50,5" Grid.Row="1" VerticalAlignment="Center" Width="175"/>
       <Label Content="temperature:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="4" VerticalAlignment="Center" Grid.RowSpan="2"/>
-      <TextBox x:Name="temperatureTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,5,-54,5" Grid.Row="4" VerticalAlignment="Center" Width="175" Grid.RowSpan="2"/>
+      <TextBox x:Name="temperatureTextBox" TextChanged="temperatureTextBox_TextChanged" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,5,-54,5" Grid.Row="4" VerticalAlignment="Center" Width="175" Grid.RowSpan="2"/>
     </Grid>
     <DataGrid x:Name="table_1DataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="138,78,53,94" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Column="1">
       <DataGrid.Columns>
