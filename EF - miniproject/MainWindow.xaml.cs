@@ -41,6 +41,8 @@ namespace EF___miniproject
             tabViewSource.Source = context.Table_1.Local;
         }
 
+        // == CRUD operations section ==
+
         public void AddCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
             var newRecord = new Table_1()
@@ -80,6 +82,16 @@ namespace EF___miniproject
             tabViewSource.View.Refresh();
         }
 
+
+        private void Table1_DataGrid_DoubleClick(object sender, EventArgs e)
+        {
+            Table_1 tab = tabViewSource.View.CurrentItem as Table_1;
+            city_nameTextBox.Text = tab.city_name;
+            city_idTextBox.Text = tab.city_id;
+            temperatureTextBox.Text = tab.temperature.ToString();
+        }
+
+        // == Downloading data from the OpenWeatherAPI section ==
 
         private async void GetApiData()
         {
@@ -130,6 +142,8 @@ namespace EF___miniproject
             });
         }
 
+        // == Data validation section ==
+
         private void City_idTextBox_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(city_idTextBox.Text, "[^0-9]"))
@@ -146,14 +160,6 @@ namespace EF___miniproject
                 MessageBox.Show("Please enter digits only!");
                 temperatureTextBox.Text = temperatureTextBox.Text.Remove(temperatureTextBox.Text.Length - 1);
             }
-        }
-
-        private void Table1_DataGrid_DoubleClick(object sender, EventArgs e)
-        {
-            Table_1 tab = tabViewSource.View.CurrentItem as Table_1;
-            city_nameTextBox.Text = tab.city_name;
-            city_idTextBox.Text = tab.city_id;
-            temperatureTextBox.Text = tab.temperature.ToString();
         }
     }
 }
